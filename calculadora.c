@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <math.h>
 
-
 //funções
 // potencialização
 float elevar (float a, float b) {
@@ -50,7 +49,36 @@ while (controlador==0)
 {
     switch (operador)
     {
-        case '^': {
+        case '+': { //soma
+            resposta = somar(numeros[0], numeros[1]);
+            numeros[0] = resposta;
+        break;}
+
+        case '-': { //subtrai
+            resposta = subtrair(numeros[0], numeros[1]);
+            numeros[0] = resposta;
+        break;}
+
+        case '/': { //divide
+            resposta = dividir(numeros[0], numeros[1]);
+            numeros[0] = resposta;
+        break;}
+
+        case '*': { // bloco multiplica
+            resposta = multiplicar(numeros[0], numeros[1]);
+            numeros[0] = resposta;
+        break;}
+
+        case 'x': { 
+            resposta = multiplicar(numeros[0], numeros[1]);
+            numeros[0] = resposta;
+        break;}
+
+        case 'X': {
+            resposta = multiplicar(numeros[0], numeros[1]);
+            numeros[0] = resposta;
+        break;}
+        case '^': { //bloco potencialização
             resposta = elevar(numeros[0], numeros[1]);
             numeros[0] = resposta;
         break;}
@@ -65,37 +93,7 @@ while (controlador==0)
             numeros[0] = resposta;
         break;}
 
-        case '+': {
-            resposta = somar(numeros[0], numeros[1]);
-            numeros[0] = resposta;
-        break;}
-
-        case '-': {
-            resposta = subtrair(numeros[0], numeros[1]);
-            numeros[0] = resposta;
-        break;}
-
-        case '/': {
-            resposta = dividir(numeros[0], numeros[1]);
-            numeros[0] = resposta;
-        break;}
-
-        case '*': {
-            resposta = multiplicar(numeros[0], numeros[1]);
-            numeros[0] = resposta;
-        break;}
-
-        case 'x': {
-            resposta = multiplicar(numeros[0], numeros[1]);
-            numeros[0] = resposta;
-        break;}
-
-        case 'X': {
-            resposta = multiplicar(numeros[0], numeros[1]);
-            numeros[0] = resposta;
-        break;}
-
-        case 'r': {
+        case 'r': { //bloco radiciação
             resposta = radiciação(numeros[0], numeros[1]);
             numeros[0] = resposta;
         break;}
@@ -104,22 +102,31 @@ while (controlador==0)
             resposta = radiciação(numeros[0], numeros[1]);
             numeros[0] = resposta;
         break;}
-
-        case '?': {
+        
+        //controla a saída do looping, encerrando o programa caso o usuário deseje.
+        case '?': { 
             controlador++;
-        break;}        
+        break;}
+        
+        case 'e': { 
+            controlador++;
+        break;}
+
+        case 'E': { 
+            controlador++;
+        break;}              
     
-    default:{
+    default:{ //caso o usuário coloque algum simbolo fora dos previstos, mostra um texto de operação inválida e encerra o programa
         printf("Operação inválida.\n");
         controlador++;
     }
         break;
     }
-    printf("%.2f", resposta);
+    printf("%.2f", resposta); //se quiser mais casas decimais como resposta, delete o .2
     scanf(" %c%f", &operador, &numeros[1]);
 
 } //fim while
-    printf("Programa finalizado.\n");
+    printf("\nPrograma finalizado\n");
     
     return 0;
 } 
